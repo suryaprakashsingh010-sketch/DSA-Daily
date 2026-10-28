@@ -36,21 +36,68 @@ import  java.util.*;
 //        System.out.print(st);
 //    }
 //}
-import java .util.*;
+//import java .util.*;
+//public class stack {
+//    public  static void main(String []args){
+//        Stack<Integer> st  =new Stack<>();
+//        st.add(20);
+//        st.add(30);
+//        st.add(40);
+//        st.add(60);
+//        st.add(60);
+//
+//        Stack<Integer> st1 = new Stack<>();
+//        st1.addAll(st);
+//
+//        System.out.print(st);
+//        System.out.println();
+//        System.out.print(st1);
+//    }
+//}
+
+
+
+import java.util.*;
+
 public class stack {
-    public  static void main(String []args){
-        Stack<Integer> st  =new Stack<>();
-        st.add(20);
-        st.add(30);
-        st.add(40);
-        st.add(60);
-        st.add(60);
+    public static void main(String[] args) {
+        Stack<Integer> st = new Stack<>();
+        Scanner cs = new Scanner(System.in);
 
-        Stack<Integer> st1 = new Stack<>();
-        st1.addAll(st);
+        System.out.print("Enter number of elements: ");
+        int n = cs.nextInt();
 
-        System.out.print(st);
-        System.out.println();
-        System.out.print(st1);
+        System.out.println("Enter stack elements:");
+        for (int i = 0; i < n; i++) {
+            st.push(cs.nextInt());
+        }
+
+        System.out.print("Enter index: ");
+        int inx = cs.nextInt();
+
+        System.out.print("Enter number to insert: ");
+        int x = cs.nextInt();
+
+        if (inx < 0 || inx > st.size()) {
+            System.out.println("Invalid index");
+            cs.close();
+            return;
+        }
+
+        Stack<Integer> temp = new Stack<>();
+
+        while (st.size() > inx) {
+            temp.push(st.pop());
+        }
+
+        st.push(x);
+
+        while (!temp.isEmpty()) {
+            st.push(temp.pop());
+        }
+
+        System.out.println("Updated Stack: " + st);
+
+        cs.close();
     }
 }
